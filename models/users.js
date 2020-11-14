@@ -12,6 +12,6 @@ const Users = db.define('Users', {
     }
 })
 
-User.hasOne(post)
+Users.hasOne(post)
 
 module.exports = Users

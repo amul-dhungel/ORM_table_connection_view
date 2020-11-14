@@ -1,12 +1,12 @@
 const express = require('express')
 const router = express.Router()
 const db = require('../config/database')
-const user = require('../models/users')
+const User = require('../models/users')
 
-router.get('/users', (req, res) =>
-    user.findAll()
-        .then(gigs => {
-            console.log(gigs);
+router.get('/', (req, res) =>
+    User.findAll()
+        .then(users => {
+            console.log(users);
             res.sendStatus(200)
         })
         .catch(err => console.log(err))
@@ -24,11 +24,11 @@ router.get('/add', (req, res) => {
 
     // Insert into database table
 
-    user.create({
+    User.create({
         name,
         bio
     })
-        .then(gig => res.redirect('/users'))
+        .then(user => res.redirect('/user'))
         .catch(err => console.log(err))
 })
 

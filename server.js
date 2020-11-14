@@ -1,8 +1,9 @@
 const express = require('express')
+const bodyParser = require('body-parser')
 const db = require('./config/database')
 
 const app = express()
-const PORT = 5000
+const PORT = process.env.PORT || 5000
 
 db.authenticate()
     .then(() => {
@@ -15,5 +16,5 @@ db.authenticate()
 app.get('/', (req, res) => {
     res.send('This is the server main page')
 })
-
+app.use('/user', require('./routes/user'))
 app.listen(PORT, console.log(`Server is running on ${PORT}`))
