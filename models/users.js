@@ -1,8 +1,8 @@
 const Sequelize = require('sequelize')
 const db = require('../config/database')
-const post = require('./models/posts')
+const post = require('./post')
 
-const User = db.define('Users', {
+const Users = db.define('Users', {
     name: {
         type: Sequelize.STRING
     },
@@ -14,4 +14,4 @@ const User = db.define('Users', {
 
 User.hasOne(post)
 
-module.exports = User
+module.exports = Users
