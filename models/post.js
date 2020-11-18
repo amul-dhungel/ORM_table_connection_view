@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize')
 const db = require('../config/database')
 
-const post = db.define('post', {
+const posts = db.define('posts', {
     title: {
         type: Sequelize.STRING
     },
@@ -11,4 +11,4 @@ const post = db.define('post', {
     }
 })
 
-module.exports = post
+module.exports = posts

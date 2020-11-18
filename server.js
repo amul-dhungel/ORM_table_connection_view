@@ -16,5 +16,17 @@ db.authenticate()
 app.get('/', (req, res) => {
     res.send('This is the server main page')
 })
+
+db.sync({
+    logging: console.log,
+    force: true
+})
+    .then(() => {
+        console.log('Connection to database established successfully')
+    })
+    .catch(err => {
+        console.error('Unable to connect to database', err)
+    })
+
 app.use('/user', require('./routes/user'))
 app.listen(PORT, console.log(`Server is running on ${PORT}`))
