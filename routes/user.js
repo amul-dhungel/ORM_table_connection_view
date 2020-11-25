@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 const db = require('../config/database')
 const User = require('../models/users')
+const Data = require('../data')
 
 router.get('/', (req, res) =>
     User.findAll()
@@ -12,6 +13,16 @@ router.get('/', (req, res) =>
         .catch(err => console.log(err))
 
 )
+
+router.get('/create', (req, res) => {
+    User.bulkCreate(Data)
+        .then(() => {
+            console.log("Data in user table inserted sucessfully")
+        })
+        .catch(err => console.log(err))
+})
+
+
 
 router.get('/add', (req, res) => {
     const data = {
